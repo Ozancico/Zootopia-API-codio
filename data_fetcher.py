@@ -1,8 +1,14 @@
 # data_fetcher.py
 
 import requests
+from dotenv import load_dotenv
+import os
 
-API_KEY = 'eKPznn1I8SU6qUm51m2EIA==NpknR5DoeWhLnWuT'
+# Lade Umgebungsvariablen aus der .env-Datei
+load_dotenv()
+
+# Hol den API-Schlüssel aus der Umgebungsvariablen
+API_KEY = os.getenv("API_KEY")
 API_URL = 'https://api.api-ninjas.com/v1/animals'
 
 
