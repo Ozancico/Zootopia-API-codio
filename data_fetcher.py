@@ -1,5 +1,3 @@
-# data_fetcher.py
-
 import requests
 from dotenv import load_dotenv
 import os
@@ -9,7 +7,7 @@ load_dotenv()
 
 # Hol den API-Schlüssel aus der Umgebungsvariablen
 API_KEY = os.getenv("API_KEY")
-API_URL = 'https://api.api-ninjas.com/v1/animals'
+API_URL = 'https://api.api-ninjas.com/v1/animals?name='
 
 
 def fetch_data(animal_name):
@@ -29,8 +27,12 @@ def fetch_data(animal_name):
     response = requests.get(API_URL, headers=headers, params=params)
 
     if response.status_code == 200:
-        return response.json()
+        data = response.json()
+        if isinstance(data, list):
+            return data
+        else:
+            print("⚠️ Unexpected response format")
+            return []
     else:
         print(f"⚠️ Error fetching data: {response.status_code}")
         return []
-
