@@ -2,10 +2,10 @@ import requests
 from dotenv import load_dotenv
 import os
 
-# Lade Umgebungsvariablen aus der .env-Datei
+# Loads the environment variable from env file
 load_dotenv()
 
-# Hol den API-Schlüssel aus der Umgebungsvariablen
+# Gets the API-Key from the environment variable
 API_KEY = os.getenv("API_KEY")
 API_URL = 'https://api.api-ninjas.com/v1/animals?name='
 
